@@ -64,6 +64,9 @@ class Recettes
     #[ORM\ManyToMany(targetEntity: Ingredients::class, inversedBy: 'recettes')]
     private Collection $ingredients;
 
+    #[ORM\ManyToOne(inversedBy: 'recettes')]
+    private ?Categories $categorie = null;
+
     public function __construct()
     {
         $this->ingredients = new ArrayCollection();
@@ -213,4 +216,21 @@ class Recettes
 
         return $this;
     }
+
+
+    /**
+     * @return Collection<int, Categories>
+     */
+    public function getCategorie(): ?Categories
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categories $categorie): static
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+   
 }

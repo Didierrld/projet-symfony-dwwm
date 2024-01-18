@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Categories;
 use App\Entity\Ingredients;
 use App\Entity\Recettes;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -29,6 +30,14 @@ class AppFixtures extends Fixture
             $manager->persist($ingredient);
         }
        
+         // categories
+         $categoriestab = [];
+         for ($i=0; $i < 5 ; $i++) { 
+             $categorie = new Categories();
+             $categorie->setNom($this->faker->word());
+             $categoriestab[] = $categorie;
+             $manager->persist($categorie);
+         }
         //recettes
         for ($i=0; $i < 25; $i++) { 
             $recette = new Recettes();
@@ -42,6 +51,9 @@ class AppFixtures extends Fixture
 
             for ($j=0; $j < mt_rand(5, 15) ; $j++) {
                 $recette->addIngredient($ingredientstab[mt_rand(0, count($ingredientstab)-1)]);
+            }
+            for ($j=0; $j < 1 ; $j++) {
+                $recette->setCategorie($categoriestab[mt_rand(0, count($categoriestab)-1)]);
             }
             $manager->persist($recette);
         }
