@@ -1,53 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ingrédients{% endblock %}
+{% block title %}Les entrées{% endblock %}
 
 {% block body %}
 
 <div class="container mt-4">
-    <h1>Ingrédient</h1>
-
-    <div class="d-flex justify-content-center">
-      {% for message in app.flashes('success') %}
-      <div class="alert alert-success mt-4">
-        {{ message }}
-      </div>
-      {% endfor %}
-    </div>
-    <a href="{{ path('new')}}" class="btn btn-primary">Nouveau ingrédient</a>
-
-    <div class="count d-flex justify-content-center">
-        {% if ingredients.getTotalItemCount %}
-            {{ ingredients.getTotalItemCount }} Ingrédients
+    <h1>
+      Les Entrées
+       {% if ingredients.getTotalItemCount %}
+           ({{ ingredients.getTotalItemCount }})
         {% else %}
-            Pas d'Ingrédients
+            Pas d'entrées
         {% endif %}
-    </div>
+    </h1>
 
+   
     <table class="table table-hover">
         <thead>
           <tr>
-            <th scope="col">Numéro</th>
             <th scope="col">Nom</th>
             <th scope="col">Prix</th>
             <th scope="col">Date de création</th>
-            <th scope="col">Edition</th>
-            <th scope="col">Suppression</th>
+            <th scope="col">Voir</th>
           </tr>
         </thead>
         <tbody>
             {% for ingredient in ingredients %}
                 <tr class="table-primary">
-                    <th scope="row">{{ ingredient.id }}</th>
-                    <td>{{ ingredient.nom }}</td>
+                    <td scope="row">{{ ingredient.nom }}</td>
                     <td>{{ ingredient.prix }}</td>
                     <td>{{ ingredient.createdAt|date("d/m/Y") }}</td>
                     <td>
-                      <a href="{{ path('edit' , {id : ingredient.id})}}" class="btn btn-info">Editer</a>
+                      <a href="{{ path('vue' , {id : ingredient.id})}}" class="btn btn-info">Voir</a>
                     </td>
-                    <td>
-                      <a href="{{ path('delete', {id: ingredient.id})}}" onclick="return confirm('Etes vous sûr de vouloir supprimer l\'ingrédient ?')" class="btn btn-warning">Supprimer</a>
-                    </td>
+                   
                 </tr>
           {% endfor %}
         </tbody>

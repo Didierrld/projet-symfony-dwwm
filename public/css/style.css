@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: red;
+}
+
+a.nav-link {
+    color: yellow !important;
+    font-size: x-large;
+}
+
+.souris {
+    padding: 10%;
+}
+
+.display-4 {
+    color: yellow;
+}
+
+h1 {
+    color: yellow;
+    margin-bottom: 15px;
+    text-align: center;
+}

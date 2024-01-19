@@ -5,24 +5,17 @@
 {% block body %}
 
 <div class="text-center mt-4">
-    <h1 class="mt-4">Modification d'un ingredient</h1>
+    <h1 class="mt-4">Votre entrée choisi</h1>
 
     <div class="d-flex justify-content-center">
         <div class="col-3 text-center">
-            {{ form_start(form) }}
-            <div class="my-custom-class-for-errors">
-                {{ form_errors(form) }}
+          <div class="card bg-secondary mb-3" style="max-width: 20rem;">
+            <div class="card-header">{{ ingredients.categorie }}</div>
+            <div class="card-body">
+                <h4 class="card-title">{{ ingredients.nom }}</h4>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
-
-            <div class="row">
-                <div class="col">
-                    {{ form_row(form.nom) }}
-                </div>
-                <div class="col" id="some-custom-id">
-                    {{ form_row(form.prix)}}
-                </div>
             </div>
-            {{ form_end(form) }}
         </div>
     </div>
 </div>

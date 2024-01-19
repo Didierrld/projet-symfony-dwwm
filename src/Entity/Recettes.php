@@ -217,7 +217,6 @@ class Recettes
         return $this;
     }
 
-
     /**
      * @return Collection<int, Categories>
      */

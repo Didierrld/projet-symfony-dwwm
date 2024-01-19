@@ -5,23 +5,17 @@
 {% block body %}
 
 <div class="container mt-4">
-    <h1>Recettes</h1>
-
-    <div class="d-flex justify-content-center">
-      {% for message in app.flashes('success') %}
-      <div class="alert alert-success mt-4">
-        {{ message }}
-      </div>
-      {% endfor %}
-    </div>
-    <a href="{{ path('new')}}" class="btn btn-primary">Nouvelle recette</a>
-    <div class="count d-flex justify-content-center">
-        {% if recettes.getTotalItemCount %}
-            {{ recettes.getTotalItemCount }} recettes
+   <h1>
+      Les Entrées
+       {% if ingredients.getTotalItemCount %}
+           ({{ ingredients.getTotalItemCount }})
         {% else %}
-            Pas de recette
+            Pas d'entrées
         {% endif %}
-    </div>
+    </h1>
+
+
+   
 
     <table class="table table-hover">
         <thead>

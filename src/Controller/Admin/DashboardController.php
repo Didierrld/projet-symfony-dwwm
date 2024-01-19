@@ -19,22 +19,32 @@ class DashboardController extends AbstractDashboardController
     public function index(): Response
     {
       
-        return $this->render('admin/dashboard.html.twig');
+        return $this->render('admin/index.html.twig');
     }
 
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Projet Symfony Dwwm')
+            ->setTitle('La Cuisine de Catherine')
             ->renderContentMaximized();
     }
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+        yield MenuItem::linkToDashboard('Accueil Administration', 'fa fa-home');
+        
+        yield MenuItem::section('Utlisateurs');
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-users', Users::class);
+
+        yield MenuItem::section('Détails');
         yield MenuItem::linkToCrud('Ingrédients', 'fas fa-list', Ingredients::class);
         yield MenuItem::linkToCrud('Catégories', 'fas fa-list', Categories::class);
+
+        yield MenuItem::section('Recettes');
         yield MenuItem::linkToCrud('Recettes', 'fas fa-bell-concierge', Recettes::class);
+
+        yield MenuItem::section('Accueil site');
+        yield MenuItem::linkToRoute('Accueil', 'fas fa-home', 'app_home',
+            ['routeParamName' => 'App_Home']);
     }
 }

@@ -32,10 +32,6 @@ class RecetteType extends AbstractType
                 'label_attr'=>[
                     'class'=> 'form-label mt-4'
                 ],
-                'constraints'=>[
-                    new Assert\Length(['min' => 5, 'max' => 50]),
-                    new Assert\NotBlank()
-                ]
             ])
             ->add('temps',IntegerType::class,[
                 'attr' =>[
@@ -48,10 +44,6 @@ class RecetteType extends AbstractType
                 'label_attr'=>[
                     'class'=> 'form-label mt-4'
                 ],
-                'constraints'=>[
-                    new Assert\Positive(),
-                    new Assert\Length(['min' => 1, 'max' => 1441]),
-                ]
             ])
             ->add('personne',IntegerType::class,[
                 'attr' =>[
@@ -64,10 +56,6 @@ class RecetteType extends AbstractType
                 'label_attr'=>[
                     'class'=> 'form-label mt-4'
                 ],
-                'constraints'=>[
-                    new Assert\Positive(),
-                    new Assert\LessThan(51),
-                ]
             ])
             ->add('difficulte',RangeType::class,[
                 'attr' =>[
@@ -80,10 +68,6 @@ class RecetteType extends AbstractType
                 'label_attr'=>[
                     'class'=> 'form-label mt-4'
                 ],
-                'constraints'=>[
-                    new Assert\Positive(),
-                    new Assert\LessThan(5),
-                ]
             ])
             ->add('description',TextareaType::class,[
                 'attr' =>[
@@ -93,9 +77,6 @@ class RecetteType extends AbstractType
                 'label_attr'=>[
                     'class'=> 'form-label mt-4'
                 ],
-                'constraints'=>[
-                    new Assert\NotBlank()
-                ]
             ])
             ->add('prix', MoneyType::class,[
                 'attr'=>[
@@ -106,10 +87,6 @@ class RecetteType extends AbstractType
                 'label_attr'=>[
                     'class'=> 'form-label mt-4'
                 ],
-                'constraints' =>[
-                    new Assert\Positive(),
-                    new Assert\LessThan(500)
-                ]
             ])
             ->add('favori', CheckboxType::class,[
                 'attr'=>[
@@ -135,12 +112,7 @@ class RecetteType extends AbstractType
                     'class'=> 'form-check mt-4'
                 ],
             ])
-            ->add('submit', SubmitType::class,[
-                'attr' => [
-                    'class'=> 'btn btn-primary mt-4'
-                ],
-                'label'=>'Créer ma recette'
-            ])
+           
         ;
     }
 
